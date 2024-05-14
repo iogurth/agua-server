@@ -1,0 +1,32 @@
+syntax = "proto3";
+option go_package = "github.com/iogurth/agua-server/server";
+
+service MiServicio {
+  rpc Inicializador (InicializadorRequest) returns (InicializadorResponse) {}
+  rpc EnviarCoordenadas (CoordenadasRequest) returns (CoordenadasResponse) {}
+  rpc Heartbeat (HeartbeatRequest) returns (stream HeartbeatResponse) {}
+}
+
+message InicializadorRequest {
+  int32 inicializador = 1;
+}
+
+message InicializadorResponse {
+  string respuesta = 1;
+}
+
+message CoordenadasRequest {
+  string archivo = 1; // El contenido del archivo .txt se enviará como una cadena de texto
+}
+
+message CoordenadasResponse {
+  string respuesta = 1;
+}
+
+message HeartbeatRequest {
+  string mensaje = 1;
+}
+
+message HeartbeatResponse {
+  string estado = 1;
+}
